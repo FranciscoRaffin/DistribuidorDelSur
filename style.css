@@ -212,6 +212,7 @@ button:hover {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+
 .quitar-column{
     background-color: #8787a800
     
@@ -244,3 +245,108 @@ button:hover {
     display: block;
 }
 
+#end-form {
+    background-color: #33333313;
+}
+
+
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+}
+
+#end-pedido-bottom{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background-color: #545cce;
+    color: #f1f1f1;
+}
+
+#end-pedido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+}
+
+.form-row label,
+.form-row input {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+textarea {
+    height: 80px;
+}
+
+input[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#end-cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 7px;
+    
+    
+}
+
+#end-cart-table th, #end-cart-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    max-width: 300px; /* Establece el ancho máximo en píxeles */
+    min-width: 120px;
+    
+}
+
+#end-cart-table th {
+    background-color: #547aa773;
+    color: white;
+}
+
+#end-cart-body tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#end-cart-body tr:hover {
+    background-color: #ddd;
+}

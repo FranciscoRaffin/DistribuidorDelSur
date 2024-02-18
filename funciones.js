@@ -1,14 +1,5 @@
-
-
-
-
-
-
-
-
-
 //const cart = {};
-const cart = []
+var cart = []
 
 const cartBody = document.getElementById('cart-body');
 var cantidadDeElementos = 0 
@@ -19,6 +10,9 @@ const catalogoCategorias = catalogoMatriz.map(elemento => elemento[0]);
 const catalogoNombres = catalogoMatriz.map(elemento => elemento[1]);
 
 const botonFP = document.getElementById('boton-FP');
+
+var tablaVisible = false 
+
 
 function addProduct(producto, categoria) {
     const imageSrc = 'imagenes/productos' + producto[0] + '.png'
@@ -92,8 +86,10 @@ function addToCart(productId, quantity, price, valorVisible) {
         productName, // Nombre 
         quantity, // Cantidad 
         (valorVisible ? price.toFixed(2) : 'Consultar') // Valor por unidad
-    ])
+    ]);
 
+
+    
     const existingCartItem = [...cartBody.children].find(item => item.textContent.includes(productName));
     
 
@@ -109,17 +105,14 @@ function addToCart(productId, quantity, price, valorVisible) {
         quitarCell.classList.add('quitar-column');
 
         
-        
-
         const removeButton = document.createElement('button');
         removeButton.classList.add('remove-from-cart-button');
         removeButton.textContent = 'quitar';
         removeButton.addEventListener('click', () => removeFromCart(productName));
 
         quitarCell.appendChild(removeButton);
-        productNameCell.textContent = productName;
-        
 
+        productNameCell.textContent = productName;
         quantityCell.textContent = "x"+ parseInt(quantity);
         quantityCell.classList.add('quantity-text');
 
@@ -218,5 +211,74 @@ function colocarCatalogo() {
 
 
 
-const finalizarPedido = () => window.location.href = "fin_pedido.html" 
 const volverAlInicio = () => window.location.href = "index.html" 
+
+
+function finalizarPedido(){ 
+    var parametros = "?carrito=" + encodeURIComponent(JSON.stringify(cart));
+    window.location.href = "fin_pedido.html" + parametros;
+}
+
+function crearEndTable(carrito) {
+
+
+    const cuerpoTabla = document.getElementById('end-cart-body');
+
+    carrito.forEach(elemento => {
+        const fila = document.createElement('tr');
+        const celda2 = document.createElement('td');
+        const celda3 = document.createElement('td');
+        const celda4 = document.createElement('td');
+
+        // Establecer el contenido de cada celda según la estructura del elemento
+    
+
+        // Verificar si el elemento es una lista y tiene al menos 3 elementos
+        if (Array.isArray(elemento) && elemento.length >= 3) {
+            celda2.textContent = elemento[0];
+            celda3.textContent = elemento[1];
+            celda4.textContent = `$ ${elemento[2]}`;
+        } else {
+            // Si la estructura del elemento no es la esperada, establecer valores predeterminados
+            celda2.textContent = 'Producto';
+            celda3.textContent = 'Cant.';
+            celda4.textContent = '$/unidad';
+        }
+
+
+        fila.appendChild(celda2);
+        fila.appendChild(celda3);
+        fila.appendChild(celda4);
+
+        cuerpoTabla.appendChild(fila);
+    });
+}
+
+function mostrarPedido() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var carritoParam = urlParams.get('carrito');
+    var cart = JSON.parse(decodeURIComponent(carritoParam));
+
+    const tabla = document.getElementById('end-cart-table');
+    const cuerpoTabla = document.getElementById('end-cart-body');
+
+    const tablaNoCreada = () => cuerpoTabla.rows.length === 0;
+
+    if (tablaVisible) {
+        tabla.style.display = 'none';
+        tablaVisible = false;
+    } else {
+        if (tablaNoCreada()) {
+            crearEndTable(cart);
+        }
+        tabla.style.display = 'block';
+        tablaVisible = true;
+    }
+}
+
+
+
+// Obtén el contenedor donde deseas mostrar los elementos
+
+// Utiliza un bucle for para recorrer la lista y mostrar cada elemento
+
