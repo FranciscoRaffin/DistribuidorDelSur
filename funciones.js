@@ -277,8 +277,32 @@ function mostrarPedido() {
 }
 
 
+function enviarPedido() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var carritoParam = urlParams.get('carrito');
+    var pedido = JSON.parse(decodeURIComponent(carritoParam));
+    
+    const nombre = document.getElementById('nombre').value;
+    const numero = document.getElementById('telefono').value;
+    const direccion = document.getElementById('lugar').value;
+    const dudasAdicionales = document.getElementById('mensaje').value;    
+    
+    const cuerpo_pedido = `Nombre: ${nombre}\n
+    Número: ${numero}\n
+    Dirección: ${direccion}\n\n
+    Duda: ${dudasAdicionales}\n
+    ${JSON.stringify(pedido)}`;
+    
+    const mailtoLink = `mailto:soyfranraff@gmail.com?subject=Pedido&body=${encodeURIComponent(cuerpo_pedido)}`;
+    
+    // Abrir nueva ventana
+    window.location.href = mailtoLink;
+}
+
+
 
 // Obtén el contenedor donde deseas mostrar los elementos
 
 // Utiliza un bucle for para recorrer la lista y mostrar cada elemento
 
+// href="mailto:destinatario@example.com?subject=Asunto%20predefinido&body=Cuerpo%20predefinido"
