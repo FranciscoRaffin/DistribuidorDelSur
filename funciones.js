@@ -286,20 +286,30 @@ function enviarPedido() {
     const numero = document.getElementById('telefono').value;
     const direccion = document.getElementById('lugar').value;
     const dudasAdicionales = document.getElementById('mensaje').value;    
+    const timestampActual = new Date().getTime();
+
+    const cuerpo_pedido = `
+N°-PEDIDO: ${timestampActual} 
+Nombre: ${nombre}      Número de contacto: ${numero}      Dirección: ${direccion}\n
+Dudas adicionales: ${(dudasAdicionales === null ? "Sin dudas 😁. (Puede modificarlo en este punto si desea)" : "\n" + dudasAdicionales)}\n\n
+
+🛒 PEDIDO 🛒:\n
+PRODUCTO | CANTIDAD | VALOR \n
+${JSON.stringify(pedido)
+    .replace(/],/g, ']\n ')
+    .replace(/,/g, ' | ')
+    .replace(/"/g, '')
+    .replace("[", '')
+        
+}\n\n`;
     
-    const cuerpo_pedido = `Nombre: ${nombre}\n
-    Número: ${numero}\n
-    Dirección: ${direccion}\n\n
-    Duda: ${dudasAdicionales}\n
-    ${JSON.stringify(pedido)}`;
-    
-    const mailtoLink = `mailto:soyfranraff@gmail.com?subject=Pedido&body=${encodeURIComponent(cuerpo_pedido)}`;
+    const mailtoLink = `mailto:soyfranraff@gmail.com?subject=Pedido%20de%20${nombre.replace(" ", "%20")}%20N°:${timestampActual}&body=${encodeURIComponent(cuerpo_pedido)}`;
     
     // Abrir nueva ventana
     window.location.href = mailtoLink;
 }
 
-
+valorVisible ? `$${price.toFixed(2)}` : 'Consultar';
 
 // Obtén el contenedor donde deseas mostrar los elementos
 
