@@ -277,42 +277,35 @@ function mostrarPedido() {
 }
 
 
-function enviarPedido() {
+
+
+function pedidoFormateado() {
     var urlParams = new URLSearchParams(window.location.search);
     var carritoParam = urlParams.get('carrito');
     var pedido = JSON.parse(decodeURIComponent(carritoParam));
-    
-    const nombre = document.getElementById('nombre').value;
-    const numero = document.getElementById('telefono').value;
-    const direccion = document.getElementById('lugar').value;
-    const dudasAdicionales = document.getElementById('mensaje').value;    
-    const timestampActual = new Date().getTime();
 
-    const cuerpo_pedido = `
-N°-PEDIDO: ${timestampActual} 
-Nombre: ${nombre}      Número de contacto: ${numero}      Dirección: ${direccion}\n
-Dudas adicionales: ${(dudasAdicionales === null ? "Sin dudas 😁. (Puede modificarlo en este punto si desea)" : "\n" + dudasAdicionales)}\n\n
 
-🛒 PEDIDO 🛒:\n
-PRODUCTO | CANTIDAD | VALOR \n
-${JSON.stringify(pedido)
-    .replace(/],/g, ']\n ')
-    .replace(/,/g, ' | ')
-    .replace(/"/g, '')
-    .replace("[", '')
-        
-}\n\n`;
-    
-    const mailtoLink = `mailto:soyfranraff@gmail.com?subject=Pedido%20de%20${nombre.replace(" ", "%20")}%20N°:${timestampActual}&body=${encodeURIComponent(cuerpo_pedido)}`;
-    
-    // Abrir nueva ventana
-    window.location.href = mailtoLink;
+
+    return  `
+    PRODUCTO | CANTIDAD | VALOR \n
+    ${JSON.stringify(pedido)
+        .replace(/],/g, ']\n ')
+        .replace(/,/g, ' | ')
+        .replace(/"/g, '')
+        .replace("[", '')
+            
+    }
+    `
 }
 
-valorVisible ? `$${price.toFixed(2)}` : 'Consultar';
+document.getElementById("pedido_field").value = pedidoFormateado();
 
-// Obtén el contenedor donde deseas mostrar los elementos
 
-// Utiliza un bucle for para recorrer la lista y mostrar cada elemento
+document.getElementById("nro_pedido").value = new Date().getTime();
 
-// href="mailto:destinatario@example.com?subject=Asunto%20predefinido&body=Cuerpo%20predefinido"
+
+
+
+
+
+

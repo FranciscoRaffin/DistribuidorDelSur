@@ -67,20 +67,29 @@
             <br>
         </div>
 
-        <form action="procesar_formulario.php" method="post">
-            <label for="telefono">Información de contacto:</label>
-            <div class="form-row">
-                <input type="text" id="nombre" name="nombre" required placeholder="Nombre Apellido">
+        <form
+        
+        action="https://formspree.io/f/mqkrbyyz"
+        method="POST">
+            <input type="hidden" name="N°Pedido" id=nro_pedido>
+            <input type="hidden" name="Pedido" id=pedido_field> 
 
-                <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" required placeholder="número de teléfono">
+            <label for="telefono">Datos de contacto:</label>
+            <div class="form-row">
+                <input type="text" id="nombre" name="Nombre" required placeholder="Nombre Apellido">
+
+                <input type="tel" id="telefono" name="Telefono" pattern="[0-9]{10}" required placeholder="Número de teléfono">
+                <input type="email" id="email" name="Mail"  required placeholder="Email">
             </div>
+
+
             <div>
-                <label for="lugar">Dirección de entrega:</label>
-                <input id="lugar" name="lugar" required placeholder="San bernardo 433 - Wilde"></input>
+                <label for="lugar">Datos de entrega:</label>
+                <input id="lugar" name="Lugar de entrega" required placeholder="Dirección"></input>
             </div>
             <label for="mensaje">Dudas adicionales:</label>
-            <textarea id="mensaje" name="mensaje" placeholder="¿Alguna duda adicional? (opcional)"></textarea>
-            <input type="submit" value="Enviar pedido vía mail" onclick="enviarPedido()">
+            <textarea id="mensaje" name="Dudas" placeholder="¿Alguna duda adicional? (opcional)"></textarea>
+            <button type="submit">Enviar pedido</button>
             
         </form>
         <br><br>
