@@ -367,8 +367,8 @@ var catalogoMatriz = [
 //      |Ref-lista                    |Nombre en botón        |Precios visibles
 //          ↆ                             ↆ                     ↆ
         [analgesicos,                 'Analgesicos',           false  ], 
-        [cordones,                    'Cordones',              false  ], 
-        [dentifricosCepillos,         'Dentifricos Cepillos',  true   ], 
+        [cordones,                    'Cordones',              true  ], 
+        [dentifricosCepillos,         'Dentifricos Cepillos',  false   ], 
         [encendedores,                'Encendedores',          true   ], 
         [filos,                       'Filos',                 true   ], 
         [fosforos,                    'Fosforos',              true   ], 
