@@ -50,7 +50,7 @@ function addProduct(producto, categoria) {
 
     const priceElement = document.createElement('div');
     priceElement.classList.add('product-price');
-    priceElement.textContent = categoria[2] ? `$${price.toFixed(2)}` : 'Consultar precio'; // Formatear el precio
+    priceElement.textContent = categoria[2] ? `$${price.toFixed(2)}` : 'Precio a consultar'; // Formatear el precio
             
     const quantityInput = document.createElement('input');
     quantityInput.type = 'number';
