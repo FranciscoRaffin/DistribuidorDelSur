@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <header class="headder">
+        <!-- <h1 id="marca-nav">Distribuidora del Sur</h1> -->
+        <img src='imagenes/logo.png' alt="logo"  id="logo">
+
+
+
+
+
+    <!-----------------------CONTENIDO----------------------->
+        <div>
+            <button onclick="volverAlInicio()"
+            style="display: block;"
+            
+            > Volver al catálogo
+            </button>
+        </div>
+    </header>
+
+    <div style="margin-left: 80px;">
+    <h2> Ya casi terminamos </h2>
+
+    <h4>¿Nuevo en esto? Te explicamos brevemente. </h4>
+    <p> 
+        
+        📄  Envianos tu pedido llenando el siguiente <strong>formulario</strong>. Toda duda adicional es bienvenida. <br> 
+    
+    <br>📧  Te contestaremos en la brevedad vía <strong>mail</strong>. <br>
+            En caso de haber seleccionado un producto cuyo precio figura como <strong>consultar</strong> te enviaremos su valor correspondiente.<br>
+            Junto a esto responderemos dudas generales como envíos y horarios así como las dudas particulares que nos envíes. <br>  
+
+    <br>🤝  Tras esto solo queda tu confirmación y horario de entrega. <br>
+    
+    <br>🚚  El envío será procesado y te mantendremos al tanto de este.<br><br><br>
+
+    </p>
+
+    </div>
+
+    <div id="end-form"><br><br>
+
+        <div id="end-pedido"> 
+            <button id='end-pedido-bottom'
+            onclick="mostrarPedido()"
+            >Ver pedido
+            </button> 
+            <div >
+                <table id="end-cart-table" style="display: none;">
+                    <thead>
+                        <tr> 
+                            <th>Producto</th> <th>Cant.</th> <th>$/unidad</th>
+                        </tr>
+                    </thead>
+                    <tbody id='end-cart-body'></tbody>
+                </table>
+            </div>
+            <br>
+        </div>
+
+        <form
+        
+        action="https://formspree.io/f/mqkrbyyz"
+        method="POST">
+            <input type="hidden" name="N°Pedido" id=nro_pedido>
+            <input type="hidden" name="Pedido" id=pedido_field> 
+
+            <label for="telefono">Datos de contacto:</label>
+            <div class="form-row">
+                <input type="text" id="nombre" name="Nombre" required placeholder="Nombre Apellido">
+
+                <input type="tel" id="telefono" name="Telefono" pattern="[0-9]{10}" required placeholder="Número de teléfono">
+                <input type="email" id="email" name="Mail"  required placeholder="Email">
+            </div>
+
+
+            <div>
+                <label for="lugar">Datos de entrega:</label>
+                <input id="lugar" name="Lugar de entrega" required placeholder="Dirección"></input>
+            </div>
+            <label for="mensaje">Dudas adicionales:</label>
+            <textarea id="mensaje" name="Dudas" placeholder="¿Alguna duda adicional? (opcional)"></textarea>
+            <button type="submit">Enviar pedido</button>
+            
+        </form>
+        <br><br>
+    
+    </div>
+
+
+
+
+    <!-------------------------------------------------------->
+    <br><br><br>
+</body>
+
+
+
+<footer>
+    <p> © Distribuidora del Sur 2024. Todos los derechos reservados </p>
+</footer>
+
+<script src="datos_catalogo.js"> </script>
+<script src="funciones.js"> </script>
+<script src="main.js"> </script>
+
+
+</html>
+
+
